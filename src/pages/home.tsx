@@ -1,165 +1,229 @@
 import React from 'react';
-import { Card, Row, Col, Typography, Steps, List, Button } from 'antd';
-import { CheckCircleOutlined, BulbOutlined, RocketOutlined, BarChartOutlined, FileTextOutlined } from '@ant-design/icons';
+import { Button, Typography, Row, Col, Card, Space } from 'antd';
 import { Link } from 'react-router-dom';
-import HeroSlider from '../shared/HeroSlider';
+import {
+  RocketOutlined,
+  FileTextOutlined,
+  BulbOutlined,
+  ArrowRightOutlined,
+} from '@ant-design/icons';
 
 const { Title, Paragraph } = Typography;
-const { Step } = Steps;
 
 const Home: React.FC = () => {
-    const entrepreneurTools = [
-        {
-            title: 'Business Plan Generator',
-            description: 'Create a professional business plan with our step-by-step guide.',
-            features: [
-                'Executive Summary Builder',
-                'Market Analysis Tools',
-                'Financial Projections',
-                'Marketing Strategy',
-                'Implementation Timeline'
-            ]
-        },
-        {
-            title: 'Company Setup Wizard',
-            description: 'Set up your business in Dubai',
-            features: [
-                'License Selection',
-                'Activity Configuration',
-                'Shareholder Management',
-                'Cost Estimation',
-                'Document Generation'
-            ]
-        },
-        {
-            title: 'Entrepreneur Resources',
-            description: 'Access comprehensive resources to support your business journey.',
-            features: [
-                'Business Templates',
-                'Market Research Tools',
-                'Legal Guidelines',
-                'Financial Planning',
-                'Growth Strategies'
-            ]
-        }
-    ];
+  return (
+    <>
+      {/* Hero Section */}
+      <div 
+        style={{ 
+          background: 'linear-gradient(135deg, #1890ff 0%, #001529 100%)',
+          padding: '80px 0',
+          color: 'white',
+          textAlign: 'center',
+        }}
+      >
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 20px' }}>
+          <Title style={{ color: 'white', fontSize: '48px', marginBottom: '24px' }}>
+            Turn Your Vision Into Reality
+          </Title>
+          <Paragraph style={{ color: 'white', fontSize: '20px', maxWidth: 800, margin: '0 auto 40px' }}>
+            Create a professional business plan and launch your company with our
+            comprehensive suite of entrepreneurial tools.
+          </Paragraph>
+          <Space size="large">
+            <Link to="/business-plan">
+              <Button type="primary" size="large" icon={<FileTextOutlined />}>
+                Create Business Plan
+              </Button>
+            </Link>
+            <Link to="/company-setup">
+              <Button size="large" ghost icon={<RocketOutlined />}>
+                Setup Company
+              </Button>
+            </Link>
+          </Space>
+        </div>
+      </div>
 
-    const benefits = [
-        'Step-by-step business planning',
-        'Professional document generation',
-        'Market analysis tools',
-        'Financial projections',
-        'Implementation roadmap',
-        'Expert guidance',
-        'Success tracking',
-    ];
+      {/* Main Features */}
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '80px 20px' }}>
+        <Row gutter={[32, 32]} justify="center">
+          <Col xs={24} md={8}>
+            <Card 
+              hoverable 
+              style={{ height: '100%', textAlign: 'center' }}
+              bodyStyle={{ padding: '40px 24px' }}
+            >
+              <BulbOutlined style={{ fontSize: '48px', color: '#1890ff', marginBottom: '24px' }} />
+              <Title level={3}>Business Plan Generator</Title>
+              <Paragraph style={{ fontSize: '16px', marginBottom: '24px' }}>
+                Create a comprehensive business plan with our step-by-step guide and professional templates.
+              </Paragraph>
+              <Link to="/business-plan">
+                <Button type="link" icon={<ArrowRightOutlined />}>
+                  Get Started
+                </Button>
+              </Link>
+            </Card>
+          </Col>
+          <Col xs={24} md={8}>
+            <Card 
+              hoverable 
+              style={{ height: '100%', textAlign: 'center' }}
+              bodyStyle={{ padding: '40px 24px' }}
+            >
+              <RocketOutlined style={{ fontSize: '48px', color: '#1890ff', marginBottom: '24px' }} />
+              <Title level={3}>Company Setup</Title>
+              <Paragraph style={{ fontSize: '16px', marginBottom: '24px' }}>
+                Launch your business with our streamlined company registration and setup process.
+              </Paragraph>
+              <Link to="/company-setup">
+                <Button type="link" icon={<ArrowRightOutlined />}>
+                  Get Started
+                </Button>
+              </Link>
+            </Card>
+          </Col>
+          <Col xs={24} md={8}>
+            <Card 
+              hoverable 
+              style={{ height: '100%', textAlign: 'center' }}
+              bodyStyle={{ padding: '40px 24px' }}
+            >
+              <FileTextOutlined style={{ fontSize: '48px', color: '#1890ff', marginBottom: '24px' }} />
+              <Title level={3}>Resources</Title>
+              <Paragraph style={{ fontSize: '16px', marginBottom: '24px' }}>
+                Access guides, templates, and tools to support your entrepreneurial journey.
+              </Paragraph>
+              <Link to="/resources">
+                <Button type="link" icon={<ArrowRightOutlined />}>
+                  Explore
+                </Button>
+              </Link>
+            </Card>
+          </Col>
+        </Row>
+      </div>
 
-    return (
-        <>
-            <HeroSlider />
+      {/* Call to Action Section */}
+      <div 
+        style={{ 
+          background: '#f5f5f5',
+          padding: '80px 20px',
+          textAlign: 'center',
+        }}
+      >
+        <div style={{ maxWidth: 800, margin: '0 auto' }}>
+          <Title level={2}>Ready to Start Your Business?</Title>
+          <Paragraph style={{ fontSize: '18px', marginBottom: '32px' }}>
+            Join thousands of entrepreneurs who have successfully launched their
+            businesses using our platform.
+          </Paragraph>
+          <Space size="large">
+            <Link to="/business-plan">
+              <Button type="primary" size="large">
+                Start Now
+              </Button>
+            </Link>
+            <Link to="/about">
+              <Button size="large">
+                Learn More
+              </Button>
+            </Link>
+          </Space>
+        </div>
+      </div>
 
-            <div style={{ maxWidth: 1200, margin: '0 auto', marginTop: 32 }}>
-                {/* Entrepreneur Tools */}
-                <Title level={2} className="text-center mb-4">Start Your Entrepreneurial Journey</Title>
-                <Row gutter={[24, 24]} className="mb-5">
-                    {entrepreneurTools.map((tool, index) => (
-                        <Col xs={24} md={8} key={index}>
-                            <Card 
-                                title={tool.title}
-                                className="h-100"
-                                hoverable
-                                extra={
-                                    <Link to={index === 0 ? "/business-plan" : index === 1 ? "/company-setup" : "#"}>
-                                        <Button type="link">Get Started</Button>
-                                    </Link>
-                                }
-                            >
-                                <Paragraph>{tool.description}</Paragraph>
-                                <List
-                                    dataSource={tool.features}
-                                    renderItem={item => (
-                                        <List.Item>
-                                            <CheckCircleOutlined style={{ color: '#52c41a', marginRight: 8 }} />
-                                            {item}
-                                        </List.Item>
-                                    )}
-                                />
-                            </Card>
-                        </Col>
-                    ))}
-                </Row>
-
-                {/* Benefits Section */}
-                <Card className="mb-5">
-                    <Title level={2} className="text-center mb-4">Why Use Our Business Planning Tools?</Title>
-                    <Row gutter={[24, 24]}>
-                        <Col xs={24} md={12}>
-                            <List
-                                dataSource={benefits}
-                                renderItem={item => (
-                                    <List.Item>
-                                        <CheckCircleOutlined style={{ color: '#52c41a', marginRight: 8 }} />
-                                        {item}
-                                    </List.Item>
-                                )}
-                            />
-                        </Col>
-                        <Col xs={24} md={12}>
-                            <div className="p-4 bg-light rounded">
-                                <Title level={4}>Business Planning Process</Title>
-                                <Steps direction="vertical" current={-1}>
-                                    <Step title="Create Business Plan" description="Use our step-by-step business plan generator" />
-                                    <Step title="Analyze Market" description="Research your market and competition" />
-                                    <Step title="Set Up Company" description="Register and establish your business" />
-                                    <Step title="Launch & Grow" description="Implement your plan and track success" />
-                                </Steps>
-                            </div>
-                        </Col>
-                    </Row>
-                </Card>
-
-                {/* Features Section */}
-                <Row gutter={[24, 24]} className="mb-5">
-                    <Col xs={24} md={6}>
-                        <Card>
-                            <BulbOutlined style={{ fontSize: '2rem', color: '#1890ff' }} />
-                            <Title level={4}>Idea Validation</Title>
-                            <Paragraph>
-                                Tools and resources to validate your business idea and identify market opportunities.
-                            </Paragraph>
-                        </Card>
-                    </Col>
-                    <Col xs={24} md={6}>
-                        <Card>
-                            <RocketOutlined style={{ fontSize: '2rem', color: '#1890ff' }} />
-                            <Title level={4}>Launch Strategy</Title>
-                            <Paragraph>
-                                Develop a comprehensive strategy to successfully launch your business.
-                            </Paragraph>
-                        </Card>
-                    </Col>
-                    <Col xs={24} md={6}>
-                        <Card>
-                            <BarChartOutlined style={{ fontSize: '2rem', color: '#1890ff' }} />
-                            <Title level={4}>Growth Planning</Title>
-                            <Paragraph>
-                                Plan and track your business growth with financial projections and KPIs.
-                            </Paragraph>
-                        </Card>
-                    </Col>
-                    <Col xs={24} md={6}>
-                        <Card>
-                            <FileTextOutlined style={{ fontSize: '2rem', color: '#1890ff' }} />
-                            <Title level={4}>Documentation</Title>
-                            <Paragraph>
-                                Generate professional business documents and presentations.
-                            </Paragraph>
-                        </Card>
-                    </Col>
-                </Row>
+      {/* Key Benefits */}
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '80px 20px' }}>
+        <Title level={2} style={{ textAlign: 'center', marginBottom: '48px' }}>
+          Why Choose Our Platform
+        </Title>
+        <Row gutter={[48, 48]}>
+          <Col xs={24} sm={12} md={6}>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ 
+                background: '#e6f7ff', 
+                borderRadius: '50%', 
+                width: '80px', 
+                height: '80px', 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                margin: '0 auto 24px',
+              }}>
+                <BulbOutlined style={{ fontSize: '32px', color: '#1890ff' }} />
+              </div>
+              <Title level={4}>Step-by-Step Guidance</Title>
+              <Paragraph>
+                Clear instructions and templates to help you create a professional business plan
+              </Paragraph>
             </div>
-        </>
-    );
+          </Col>
+          <Col xs={24} sm={12} md={6}>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ 
+                background: '#e6f7ff', 
+                borderRadius: '50%', 
+                width: '80px', 
+                height: '80px', 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                margin: '0 auto 24px',
+              }}>
+                <RocketOutlined style={{ fontSize: '32px', color: '#1890ff' }} />
+              </div>
+              <Title level={4}>Quick Setup</Title>
+              <Paragraph>
+                Streamlined process to get your business up and running quickly
+              </Paragraph>
+            </div>
+          </Col>
+          <Col xs={24} sm={12} md={6}>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ 
+                background: '#e6f7ff', 
+                borderRadius: '50%', 
+                width: '80px', 
+                height: '80px', 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                margin: '0 auto 24px',
+              }}>
+                <FileTextOutlined style={{ fontSize: '32px', color: '#1890ff' }} />
+              </div>
+              <Title level={4}>Professional Documents</Title>
+              <Paragraph>
+                Generate high-quality business documents and presentations
+              </Paragraph>
+            </div>
+          </Col>
+          <Col xs={24} sm={12} md={6}>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ 
+                background: '#e6f7ff', 
+                borderRadius: '50%', 
+                width: '80px', 
+                height: '80px', 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                margin: '0 auto 24px',
+              }}>
+                <BulbOutlined style={{ fontSize: '32px', color: '#1890ff' }} />
+              </div>
+              <Title level={4}>Expert Resources</Title>
+              <Paragraph>
+                Access to comprehensive guides and business tools
+              </Paragraph>
+            </div>
+          </Col>
+        </Row>
+      </div>
+    </>
+  );
 };
 
 export default Home;
