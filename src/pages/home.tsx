@@ -3,9 +3,10 @@ import { Button, Typography, Row, Col, Card, Space } from 'antd';
 import { Link } from 'react-router-dom';
 import {
   RocketOutlined,
-  FileTextOutlined,
+  BarChartOutlined,
   BulbOutlined,
   ArrowRightOutlined,
+  FileTextOutlined,
 } from '@ant-design/icons';
 
 const { Title, Paragraph } = Typography;
@@ -73,13 +74,13 @@ const Home: React.FC = () => {
               bodyStyle={{ padding: '40px 24px' }}
             >
               <RocketOutlined style={{ fontSize: '48px', color: '#1890ff', marginBottom: '24px' }} />
-              <Title level={3}>Company Setup</Title>
+              <Title level={3}>Business Explorer</Title>
               <Paragraph style={{ fontSize: '16px', marginBottom: '24px' }}>
-                Launch your business with our streamlined company registration and setup process.
+                Explore business distribution across Dubai's key areas and make informed location decisions.
               </Paragraph>
-              <Link to="/company-setup">
+              <Link to="/business-explorer">
                 <Button type="link" icon={<ArrowRightOutlined />}>
-                  Get Started
+                  Explore Now
                 </Button>
               </Link>
             </Card>
@@ -90,14 +91,14 @@ const Home: React.FC = () => {
               style={{ height: '100%', textAlign: 'center' }}
               bodyStyle={{ padding: '40px 24px' }}
             >
-              <FileTextOutlined style={{ fontSize: '48px', color: '#1890ff', marginBottom: '24px' }} />
-              <Title level={3}>Resources</Title>
+              <BarChartOutlined style={{ fontSize: '48px', color: '#1890ff', marginBottom: '24px' }} />
+              <Title level={3}>Competitor Analysis</Title>
               <Paragraph style={{ fontSize: '16px', marginBottom: '24px' }}>
-                Access guides, templates, and tools to support your entrepreneurial journey.
+                Analyze your competition and market potential in Dubai's key business areas.
               </Paragraph>
-              <Link to="/resources">
+              <Link to="/competitor-analysis">
                 <Button type="link" icon={<ArrowRightOutlined />}>
-                  Explore
+                  Analyze Now
                 </Button>
               </Link>
             </Card>
