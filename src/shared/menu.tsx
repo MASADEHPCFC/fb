@@ -16,14 +16,16 @@ const Menu = () => {
   };
   const publicLinks = [
     { id: 1, title: "Home", path: "/" },
-    { id: 6, title: "Pricing Tool", path: "/cal" },
-    { id: 8, title: "Business Plan", path: "/business-plan" },
-    { id: 2, title: "About", path: "/about" },
-    { id: 7, title: "Contact Us", path: "/contact" },
-
+    { id: 2, title: "Business Plan", path: "/business-plan" },
+    { id: 3, title: "Company Setup", path: "/company-setup" },
+    { id: 4, title: "Business Explorer", path: "/business-explorer" },
+    { id: 5, title: "About", path: "/about" },
+    { id: 6, title: "Contact", path: "/contact" },
   ];
   const privateLinks = [
-    { id: 5, title: "Requests", path: "/requests" },
+    { id: 7, title: "Dashboard", path: "/dashboard" },
+    { id: 8, title: "My Plans", path: "/my-plans" },
+    { id: 9, title: "Requests", path: "/requests" },
   ];
   const Links = isLoggedIn ? [...publicLinks, ...privateLinks] : [...publicLinks];
   // Build Ant Design Menu items array
@@ -36,23 +38,14 @@ const Menu = () => {
         </Link>
       ),
     })),
-    !isLoggedIn
-      ? {
-          key: "login",
-          label: (
-            <Link to="/login" className="nav-link px-2 link-secondary" >
-              Login
-            </Link>
-          ),
-        }
-      : {
-          key: "logout",
-          label: (
-            <Link to="/" className="nav-link px-2 link-secondary" onClick={logout}>
-              logout
-            </Link>
-          ),
-        },
+    ...(isLoggedIn ? [{
+      key: "logout",
+      label: (
+        <Link to="/" className="nav-link px-2 link-secondary" onClick={logout}>
+          Sign Out
+        </Link>
+      ),
+    }] : []),
   ];
 
   return (
@@ -68,14 +61,34 @@ const Menu = () => {
             className="header-menu"
             items={menuItems}
           />
-          <Button
-            type="primary"
-            size="middle"
-            className="header-setup-btn"
-            onClick={() => navigate('/company-setup')}
-          >
-            Start Company Setup
-          </Button>
+          <div className="header-buttons">
+            {!isLoggedIn && (
+              <Button
+                type="default"
+                size="middle"
+                onClick={() => navigate('/login')}
+                style={{ 
+                  marginRight: 16,
+                  borderColor: '#1890ff',
+                  color: '#1890ff'
+                }}
+              >
+                Sign In
+              </Button>
+            )}
+            <Button
+              type="primary"
+              size="middle"
+              onClick={() => navigate('/business-plan')}
+              style={{
+                background: '#1890ff',
+                borderColor: '#1890ff',
+                transition: 'all 0.3s'
+              }}
+            >
+              Create Business Plan
+            </Button>
+          </div>
         </div>
       </div>
     </Header>
