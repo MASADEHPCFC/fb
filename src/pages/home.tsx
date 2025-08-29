@@ -1,56 +1,57 @@
 import React from 'react';
-import { Card, Row, Col, Typography, Steps, List } from 'antd';
-import { CheckCircleOutlined, BankOutlined, TeamOutlined, GlobalOutlined } from '@ant-design/icons';
+import { Card, Row, Col, Typography, Steps, List, Button } from 'antd';
+import { CheckCircleOutlined, BulbOutlined, RocketOutlined, BarChartOutlined, FileTextOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 import HeroSlider from '../shared/HeroSlider';
 
 const { Title, Paragraph } = Typography;
 const { Step } = Steps;
 
 const Home: React.FC = () => {
-    const licenseTypes = [
+    const entrepreneurTools = [
         {
-            title: 'FZE (Free Zone Establishment)',
-            description: 'Single shareholder company structure, ideal for individual entrepreneurs and small businesses.',
+            title: 'Business Plan Generator',
+            description: 'Create a professional business plan with our step-by-step guide.',
             features: [
-                '100% foreign ownership',
-                'Single shareholder',
-                'Limited liability',
-                'Tax exemption',
-                'Full repatriation of profits'
+                'Executive Summary Builder',
+                'Market Analysis Tools',
+                'Financial Projections',
+                'Marketing Strategy',
+                'Implementation Timeline'
             ]
         },
         {
-            title: 'FZCO (Free Zone Company)',
-            description: 'Multiple shareholder company structure, perfect for partnerships and larger businesses.',
+            title: 'Company Setup Wizard',
+            description: 'Set up your business in Dubai',
             features: [
-                '100% foreign ownership',
-                'Multiple shareholders (2-50)',
-                'Limited liability',
-                'Tax exemption',
-                'Full repatriation of profits'
+                'License Selection',
+                'Activity Configuration',
+                'Shareholder Management',
+                'Cost Estimation',
+                'Document Generation'
             ]
         },
         {
-            title: 'Business Center License',
-            description: 'Flexible business setup option for companies looking to establish a presence in Dubai.',
+            title: 'Entrepreneur Resources',
+            description: 'Access comprehensive resources to support your business journey.',
             features: [
-                'Virtual office solutions',
-                'Business support services',
-                'Flexible workspace options',
-                'Access to business facilities',
-                'Professional business address'
+                'Business Templates',
+                'Market Research Tools',
+                'Legal Guidelines',
+                'Financial Planning',
+                'Growth Strategies'
             ]
         }
     ];
 
     const benefits = [
-        'Strategic location in Dubai',
-        '100% foreign ownership',
-        'Tax-free environment',
-        'Full repatriation of profits',
-        'Modern infrastructure',
-        'Access to global markets',
-        'Business-friendly regulations',
+        'Step-by-step business planning',
+        'Professional document generation',
+        'Market analysis tools',
+        'Financial projections',
+        'Implementation roadmap',
+        'Expert guidance',
+        'Success tracking',
     ];
 
     return (
@@ -58,19 +59,24 @@ const Home: React.FC = () => {
             <HeroSlider />
 
             <div style={{ maxWidth: 1200, margin: '0 auto', marginTop: 32 }}>
-                {/* License Types */}
-                <Title level={2} className="text-center mb-4">Choose Your License Type</Title>
+                {/* Entrepreneur Tools */}
+                <Title level={2} className="text-center mb-4">Start Your Entrepreneurial Journey</Title>
                 <Row gutter={[24, 24]} className="mb-5">
-                    {licenseTypes.map((type, index) => (
+                    {entrepreneurTools.map((tool, index) => (
                         <Col xs={24} md={8} key={index}>
                             <Card 
-                                title={type.title}
+                                title={tool.title}
                                 className="h-100"
                                 hoverable
+                                extra={
+                                    <Link to={index === 0 ? "/business-plan" : index === 1 ? "/company-setup" : "#"}>
+                                        <Button type="link">Get Started</Button>
+                                    </Link>
+                                }
                             >
-                                <Paragraph>{type.description}</Paragraph>
+                                <Paragraph>{tool.description}</Paragraph>
                                 <List
-                                    dataSource={type.features}
+                                    dataSource={tool.features}
                                     renderItem={item => (
                                         <List.Item>
                                             <CheckCircleOutlined style={{ color: '#52c41a', marginRight: 8 }} />
@@ -85,7 +91,7 @@ const Home: React.FC = () => {
 
                 {/* Benefits Section */}
                 <Card className="mb-5">
-                    <Title level={2} className="text-center mb-4">Why Choose PCFC?</Title>
+                    <Title level={2} className="text-center mb-4">Why Use Our Business Planning Tools?</Title>
                     <Row gutter={[24, 24]}>
                         <Col xs={24} md={12}>
                             <List
@@ -100,12 +106,12 @@ const Home: React.FC = () => {
                         </Col>
                         <Col xs={24} md={12}>
                             <div className="p-4 bg-light rounded">
-                                <Title level={4}>Quick Setup Process</Title>
+                                <Title level={4}>Business Planning Process</Title>
                                 <Steps direction="vertical" current={-1}>
-                                    <Step title="Choose License Type" description="Select the most suitable license for your business" />
-                                    <Step title="Submit Documents" description="Provide required documentation" />
-                                    <Step title="Pay Fees" description="Complete payment for license and services" />
-                                    <Step title="Start Operations" description="Begin your business activities" />
+                                    <Step title="Create Business Plan" description="Use our step-by-step business plan generator" />
+                                    <Step title="Analyze Market" description="Research your market and competition" />
+                                    <Step title="Set Up Company" description="Register and establish your business" />
+                                    <Step title="Launch & Grow" description="Implement your plan and track success" />
                                 </Steps>
                             </div>
                         </Col>
@@ -114,30 +120,39 @@ const Home: React.FC = () => {
 
                 {/* Features Section */}
                 <Row gutter={[24, 24]} className="mb-5">
-                    <Col xs={24} md={8}>
+                    <Col xs={24} md={6}>
                         <Card>
-                            <BankOutlined style={{ fontSize: '2rem', color: '#1890ff' }} />
-                            <Title level={4}>Business Support</Title>
+                            <BulbOutlined style={{ fontSize: '2rem', color: '#1890ff' }} />
+                            <Title level={4}>Idea Validation</Title>
                             <Paragraph>
-                                Comprehensive business support services including banking, legal, and administrative assistance.
+                                Tools and resources to validate your business idea and identify market opportunities.
                             </Paragraph>
                         </Card>
                     </Col>
-                    <Col xs={24} md={8}>
+                    <Col xs={24} md={6}>
                         <Card>
-                            <TeamOutlined style={{ fontSize: '2rem', color: '#1890ff' }} />
-                            <Title level={4}>Networking</Title>
+                            <RocketOutlined style={{ fontSize: '2rem', color: '#1890ff' }} />
+                            <Title level={4}>Launch Strategy</Title>
                             <Paragraph>
-                                Access to a vibrant business community and networking opportunities with other companies.
+                                Develop a comprehensive strategy to successfully launch your business.
                             </Paragraph>
                         </Card>
                     </Col>
-                    <Col xs={24} md={8}>
+                    <Col xs={24} md={6}>
                         <Card>
-                            <GlobalOutlined style={{ fontSize: '2rem', color: '#1890ff' }} />
-                            <Title level={4}>Global Reach</Title>
+                            <BarChartOutlined style={{ fontSize: '2rem', color: '#1890ff' }} />
+                            <Title level={4}>Growth Planning</Title>
                             <Paragraph>
-                                Strategic location providing easy access to markets in the Middle East, Africa, and Asia.
+                                Plan and track your business growth with financial projections and KPIs.
+                            </Paragraph>
+                        </Card>
+                    </Col>
+                    <Col xs={24} md={6}>
+                        <Card>
+                            <FileTextOutlined style={{ fontSize: '2rem', color: '#1890ff' }} />
+                            <Title level={4}>Documentation</Title>
+                            <Paragraph>
+                                Generate professional business documents and presentations.
                             </Paragraph>
                         </Card>
                     </Col>

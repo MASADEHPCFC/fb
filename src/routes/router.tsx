@@ -13,7 +13,7 @@ import Requests from "@/pages/requests/requests";
 import Dashboard from "@/pages/dashboard";
 import EmployeeLanding from "@/pages/employee/EmployeeLanding";
 import ClientRegistration from "@/pages/employee/ClientRegistration";
-
+import BusinessPlanGenerator from "@/pages/business-plan/BusinessPlanGenerator";
 const publicRoutes: RouteObject[] = [
   {
     path: "/",
@@ -22,6 +22,10 @@ const publicRoutes: RouteObject[] = [
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/business-plan",
+        element: <BusinessPlanGenerator />,
       },
       {
         path: "/about",

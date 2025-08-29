@@ -17,6 +17,7 @@ const Menu = () => {
   const publicLinks = [
     { id: 1, title: "Home", path: "/" },
     { id: 6, title: "Pricing Tool", path: "/cal" },
+    { id: 8, title: "Business Plan", path: "/business-plan" },
     { id: 2, title: "About", path: "/about" },
     { id: 7, title: "Contact Us", path: "/contact" },
 
