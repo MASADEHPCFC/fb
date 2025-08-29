@@ -74,7 +74,7 @@ const dubaiAreas: DubaiArea[] = [
   }
 ];
 
-const areaStatistics: { [key: string]: AreaStatistics } = {
+export const areaStatistics: { [key: string]: AreaStatistics } = {
   jlt: {
     id: 'jlt',
     name: 'Jumeirah Lake Towers',

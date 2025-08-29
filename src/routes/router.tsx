@@ -15,6 +15,7 @@ import EmployeeLanding from "@/pages/employee/EmployeeLanding";
 import ClientRegistration from "@/pages/employee/ClientRegistration";
 import BusinessPlanGenerator from "@/pages/business-plan/BusinessPlanGenerator";
 import BusinessExplorer from "@/pages/business-explorer/BusinessExplorer";
+import CompetitorAnalysis from "@/pages/competitor-analysis/CompetitorAnalysis";
 const publicRoutes: RouteObject[] = [
   {
     path: "/",
@@ -51,6 +52,10 @@ const publicRoutes: RouteObject[] = [
       {
         path: "/business-explorer",
         element: <BusinessExplorer />,
+      },
+      {
+        path: "/competitor-analysis",
+        element: <CompetitorAnalysis />,
       },
       {
         path: "/cal",
