@@ -176,9 +176,6 @@ const BusinessPlanGenerator: React.FC = () => {
         <BusinessPlanSummary
           data={currentPlan}
           onBack={() => setCurrentStep(8)}
-          onGeneratePDF={() => {
-            // PDF generation logic will be handled by the GenerateBusinessPlanPDF component
-          }}
         />
       ),
     },

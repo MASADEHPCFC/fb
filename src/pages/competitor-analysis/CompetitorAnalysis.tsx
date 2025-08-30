@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, Typography, Form, Select, Input, Button, Row, Col, Statistic, Progress, Alert, Tag, List, Divider } from 'antd';
 import { RiseOutlined, WarningOutlined, CheckCircleOutlined, BarChartOutlined, TeamOutlined, ShopOutlined } from '@ant-design/icons';
 import { areaStatistics } from '../business-explorer/BusinessExplorer';
+import { formatCurrencyWithDirham, formatNumberWithCommas } from '../../utils/currency';
 
 const { Title, Paragraph, Text } = Typography;
 const { Option } = Select;
@@ -197,6 +198,7 @@ const CompetitorAnalysis: React.FC = () => {
                     title="Direct Competitors"
                     value={analysisResult.directCompetitors}
                     prefix={<TeamOutlined />}
+                    formatter={(value) => formatNumberWithCommas(Number(value))}
                   />
                 </Col>
                 <Col span={8}>
@@ -204,6 +206,7 @@ const CompetitorAnalysis: React.FC = () => {
                     title="Indirect Competitors"
                     value={analysisResult.indirectCompetitors}
                     prefix={<ShopOutlined />}
+                    formatter={(value) => formatNumberWithCommas(Number(value))}
                   />
                 </Col>
                 <Col span={8}>

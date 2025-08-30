@@ -1,5 +1,7 @@
 import React from 'react';
-import { Form, Input, Button, Typography, Space, Select } from 'antd';
+import { Form, Input, Button, Typography, Space, Select, Alert } from 'antd';
+import { Link } from 'react-router-dom';
+import { CompassOutlined } from '@ant-design/icons';
 import { BusinessPlanData } from '../../../interfaces/businessPlan.interface';
 
 const { TextArea } = Input;
@@ -89,6 +91,22 @@ const BusinessDescriptionStep: React.FC<BusinessDescriptionStepProps> = ({
           label="Business Location"
           rules={[{ required: true, message: 'Please specify your business location' }]}
           help="Physical location and/or operational jurisdiction of your business"
+          extra={
+            <Alert
+              message={
+                <Space>
+                  <CompassOutlined />
+                  <span>Need help choosing a location? </span>
+                  <Link to="/business-explorer" target="_blank">
+                    Explore business distribution across Dubai's key areas
+                  </Link>
+                </Space>
+              }
+              type="info"
+              showIcon={false}
+              style={{ marginTop: 8 }}
+            />
+          }
         >
           <TextArea
             placeholder="Describe your business location and any relevant details..."

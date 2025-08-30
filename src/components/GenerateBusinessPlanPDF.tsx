@@ -3,6 +3,7 @@ import { Button } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
 import { Document, Page, Text, View, StyleSheet, PDFDownloadLink } from '@react-pdf/renderer';
 import { BusinessPlanData } from '../interfaces/businessPlan.interface';
+import { formatCurrencyWithDirham } from '../utils/currency';
 
 // Create styles
 const styles = StyleSheet.create({
@@ -110,10 +111,10 @@ const BusinessPlanDocument = ({ data }: { data: BusinessPlanData }) => (
       {/* Financial Projections */}
       <View style={styles.section}>
         <Text style={styles.heading}>Financial Projections</Text>
-        <Text style={styles.text}>Startup Costs: ${data.financialProjections.startupCosts}</Text>
-        <Text style={styles.text}>Monthly Expenses: ${data.financialProjections.monthlyExpenses}</Text>
-        <Text style={styles.text}>Projected Revenue: ${data.financialProjections.projectedRevenue}</Text>
-        <Text style={styles.text}>Break-even Point: ${data.financialProjections.breakEvenPoint}</Text>
+        <Text style={styles.text}>Startup Costs: {formatCurrencyWithDirham(data.financialProjections.startupCosts)}</Text>
+        <Text style={styles.text}>Monthly Expenses: {formatCurrencyWithDirham(data.financialProjections.monthlyExpenses)}</Text>
+        <Text style={styles.text}>Projected Revenue: {formatCurrencyWithDirham(data.financialProjections.projectedRevenue)}</Text>
+        <Text style={styles.text}>Break-even Point: {formatCurrencyWithDirham(data.financialProjections.breakEvenPoint)}</Text>
         <Text style={styles.text}>Projected Profit Margin: {data.financialProjections.projectedProfitMargin}%</Text>
       </View>
 

@@ -45,10 +45,11 @@ const FinancialProjectionsStep: React.FC<FinancialProjectionsStepProps> = ({
           help="Include all initial costs to start the business"
         >
           <InputNumber
-            formatter={(value) => formatCurrencyWithDirham(value || 0)}
+            formatter={(value) => formatCurrencyWithDirham(Number(value) || 0)}
             parser={(value) => value!.replace(/[^\d.]/g, '')}
             style={{ width: '100%' }}
             placeholder="Enter total startup costs"
+            defaultValue={0}
           />
         </Form.Item>
 
@@ -59,10 +60,11 @@ const FinancialProjectionsStep: React.FC<FinancialProjectionsStepProps> = ({
           help="Include all operating expenses (rent, salaries, utilities, etc.)"
         >
           <InputNumber
-            formatter={(value) => formatCurrencyWithDirham(value || 0)}
+            formatter={(value) => formatCurrencyWithDirham(Number(value) || 0)}
             parser={(value) => value!.replace(/[^\d.]/g, '')}
             style={{ width: '100%' }}
             placeholder="Enter monthly expenses"
+            defaultValue={0}
           />
         </Form.Item>
 
@@ -73,10 +75,11 @@ const FinancialProjectionsStep: React.FC<FinancialProjectionsStepProps> = ({
           help="Estimated total revenue for the first year of operation"
         >
           <InputNumber
-            formatter={(value) => formatCurrencyWithDirham(value || 0)}
+            formatter={(value) => formatCurrencyWithDirham(Number(value) || 0)}
             parser={(value) => value!.replace(/[^\d.]/g, '')}
             style={{ width: '100%' }}
             placeholder="Enter projected annual revenue"
+            defaultValue={0}
           />
         </Form.Item>
 
@@ -87,10 +90,11 @@ const FinancialProjectionsStep: React.FC<FinancialProjectionsStepProps> = ({
           help="The point at which total revenue equals total costs"
         >
           <InputNumber
-            formatter={(value) => formatCurrencyWithDirham(value || 0)}
+            formatter={(value) => formatCurrencyWithDirham(Number(value) || 0)}
             parser={(value) => value!.replace(/[^\d.]/g, '')}
             style={{ width: '100%' }}
             placeholder="Enter break-even point"
+            defaultValue={0}
           />
         </Form.Item>
 

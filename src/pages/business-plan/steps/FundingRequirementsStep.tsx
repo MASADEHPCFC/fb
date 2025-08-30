@@ -50,7 +50,11 @@ const FundingRequirementsStep: React.FC<FundingRequirementsStepProps> = ({
       <Form
         form={form}
         layout="vertical"
-        initialValues={data.fundingRequirements}
+        initialValues={{
+          ...data.fundingRequirements,
+          startupCosts: Number(data.fundingRequirements?.startupCosts) || 0,
+          operationalCosts: Number(data.fundingRequirements?.operationalCosts) || 0,
+        }}
         onFinish={handleSubmit}
       >
         <Form.Item
@@ -60,10 +64,11 @@ const FundingRequirementsStep: React.FC<FundingRequirementsStepProps> = ({
           help="Initial investment needed to start the business"
         >
           <InputNumber
-            formatter={(value) => formatCurrencyWithDirham(value || 0)}
+            formatter={(value) => formatCurrencyWithDirham(Number(value) || 0)}
             parser={(value) => value!.replace(/[^\d.]/g, '')}
             style={{ width: '100%' }}
             placeholder="Enter startup costs"
+            defaultValue={0}
           />
         </Form.Item>
 
@@ -74,10 +79,11 @@ const FundingRequirementsStep: React.FC<FundingRequirementsStepProps> = ({
           help="Ongoing monthly expenses to run the business"
         >
           <InputNumber
-            formatter={(value) => formatCurrencyWithDirham(value || 0)}
+            formatter={(value) => formatCurrencyWithDirham(Number(value) || 0)}
             parser={(value) => value!.replace(/[^\d.]/g, '')}
             style={{ width: '100%' }}
             placeholder="Enter monthly operational costs"
+            defaultValue={0}
           />
         </Form.Item>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Typography, Button, Space, Descriptions, List } from 'antd';
+import GenerateBusinessPlanPDF from '../../../components/GenerateBusinessPlanPDF';
 import { BusinessPlanData } from '../../../interfaces/businessPlan.interface';
 import { formatCurrencyWithDirham } from '../../../utils/currency';
 import dayjs from 'dayjs';
@@ -9,13 +10,11 @@ const { Title, Paragraph, Text } = Typography;
 interface BusinessPlanSummaryProps {
   data: BusinessPlanData;
   onBack: () => void;
-  onGeneratePDF: () => void;
 }
 
 const BusinessPlanSummary: React.FC<BusinessPlanSummaryProps> = ({
   data,
   onBack,
-  onGeneratePDF,
 }) => {
   return (
     <div>
@@ -173,13 +172,7 @@ const BusinessPlanSummary: React.FC<BusinessPlanSummaryProps> = ({
           <Button onClick={onBack}>
             Previous
           </Button>
-          <Button
-            type="primary"
-            onClick={onGeneratePDF}
-            size="large"
-          >
-            Generate Business Plan PDF
-          </Button>
+          <GenerateBusinessPlanPDF data={data} />
         </Space>
       </div>
     </div>
