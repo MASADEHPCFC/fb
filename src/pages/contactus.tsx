@@ -15,8 +15,8 @@ const ContactUs: React.FC = () => {
     };
 
     const center = {
-        lat: 25.261780137566134, // PCFC coordinates
-        lng: 55.26740951654628
+        lat: 25.186085, // Business Bay coordinates
+        lng: 55.259052
     };
 
     const handleSubmit = (values: any) => {
@@ -29,7 +29,7 @@ const ContactUs: React.FC = () => {
         <div>
             <Title level={2} className="text-center mb-4">Contact Us</Title>
             <Paragraph className="text-center mb-4" style={{ maxWidth: 700, margin: '0 auto' }}>
-                We value your interest in PCFC Company Setup. Whether you have questions about our services, need support, or want to discuss your business goals, our team is here to help. Please fill out the form below or use the provided contact details to reach out to us. We look forward to connecting with you!
+                Welcome to Founder Base! We're dedicated to helping entrepreneurs establish and grow their businesses in Dubai. Whether you need guidance on company formation, licensing, or business planning, our expert team is ready to assist. Reach out to us through the form below or contact us directly - we're here to support your entrepreneurial journey!
             </Paragraph>
             
             <Row gutter={[24, 24]}>
@@ -46,8 +46,9 @@ const ContactUs: React.FC = () => {
                             <EnvironmentOutlined style={{ fontSize: '1.5rem', color: '#1890ff', marginRight: 8 }} />
                             <strong>Address:</strong>
                             <Paragraph>
-                                Ports, Customs and Free Zone Corporation<br />
-                                Dubai, United Arab Emirates
+                                Founder Base<br />
+                                Business Bay, Dubai<br />
+                                United Arab Emirates
                             </Paragraph>
                         </div>
 
@@ -64,8 +65,8 @@ const ContactUs: React.FC = () => {
                             <MailOutlined style={{ fontSize: '1.5rem', color: '#1890ff', marginRight: 8 }} />
                             <strong>Email:</strong>
                             <Paragraph>
-                                info@pcfc.ae<br />
-                                support@pcfc.ae
+                                info@founderbase.ae<br />
+                                support@founderbase.ae
                             </Paragraph>
                         </div>
                     </Card>

@@ -1,9 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Layout, Menu as AntMenu } from "antd";
-import { useState } from "react";
 import tokenService from "../services/token.service";
 import { Button } from "antd";
-import logoUrl from '../assets/pcfc.svg'
+import logoUrl from '../assets/image.jpg'
 const { Header } = Layout;
 
 const Menu = () => {
@@ -52,7 +51,7 @@ const Menu = () => {
     <Header className="main-header">
       <div className="header-content">
         <Link to="/" className="header-logo">
-          <img src={logoUrl} alt="logo" />
+          <img src={logoUrl} style={{ width: 160, height: 65 }} alt="logo" />
         </Link>
         <div className="header-menu-actions">
           <AntMenu

@@ -235,9 +235,7 @@ const CompanySetup: React.FC = () => {
               {formatCurrencyWithDirham(currentCompany.costs.tradeNameCost)}
             </Descriptions.Item>
             <Descriptions.Item label="Total Cost" className="font-bold">
-              {formatCurrencyWithDirham(currentCompany.costs.totalCost, {
-                size: 18,
-              })}
+              {formatCurrencyWithDirham(currentCompany.costs.totalCost)}
             </Descriptions.Item>
           </Descriptions>
           <div style={{ marginTop: "1rem" }}>
@@ -311,9 +309,7 @@ const CompanySetup: React.FC = () => {
           <Typography.Text strong style={{ fontSize: 16 }}>
             License Cost:{" "}
             <span style={{ color: "#1677ff" }}>
-              {formatCurrencyWithDirham(currentCompany.costs.totalCost, {
-                color: "#1677ff",
-              })}
+              {formatCurrencyWithDirham(currentCompany.costs.totalCost)}
             </span>
           </Typography.Text>
         </div>
