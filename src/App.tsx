@@ -2,8 +2,6 @@ import { Outlet } from 'react-router-dom';
 import Menu from './shared/menu';
 import Footer from './shared/footer';
 import { Layout, ConfigProvider } from 'antd';
-import { Provider } from 'react-redux';
-import { store } from './store/store';
 import { theme } from './theme/theme';
 import './theme/globalStyles.css';
 
@@ -12,11 +10,10 @@ const { Content } = Layout;
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <ConfigProvider
+    <ConfigProvider
         theme={{
           token: {
-            colorPrimary: theme.colors.primary,
+            colorPrimary: theme.colors.secondary,
             borderRadius: 8,
             colorBgContainer: theme.colors.background,
             colorText: theme.colors.text,
@@ -34,7 +31,6 @@ const App = () => {
           <Footer />
         </Layout>
       </ConfigProvider>
-    </Provider>
   );
 };
 

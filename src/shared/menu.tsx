@@ -51,7 +51,7 @@ const Menu = () => {
     <Header className="main-header">
       <div className="header-content">
         <Link to="/" className="header-logo">
-          <img src={logoUrl} style={{ width: 160, height: 65 }} alt="logo" />
+          {/* <img src={logoUrl} style={{ width: 160, height: 65 }} alt="logo" /> */}
         </Link>
         <div className="header-menu-actions">
           <AntMenu

@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
 import { store } from '@/store';
+
 import '@/main.css';
 import './i18n';
 import reportWebVitals from '@/reportWebVitals';

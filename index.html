@@ -9,7 +9,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
 
-  <title>FZX</title>
+    <link rel="stylesheet" href="https://gentle-sky-0c5b6af1e.2.azurestaticapps.net/style.css" />
+    <script src="https://gentle-sky-0c5b6af1e.2.azurestaticapps.net/nous-chat.js"></script>
+  <title>Founder Base</title>
 </head>
 
 <body>
@@ -17,59 +19,18 @@
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
   <script>
-    (function () {
-      var appUrl = 'https://gray-meadow-0c2b67500.6.azurestaticapps.net';
-      window.MaryamConfig = {
-        appUrl,
-        apiUrl: 'https://maryam-backend.agreeablemushroom-2e0bb051.uaenorth.azurecontainerapps.io',
-        userid: 'minagamil44',
-        username: 'Mahmoud',
-        avatarNumber: '02',
-        language: 'en',
-      };
-
-      function initializeWidget() {
-        if (window.Maryam && window.Maryam.init && window.Maryam.initialized) {
-          try {
-            window.Maryam.init(window.MaryamConfig);
-          } catch (error) {
-            console.error('Maryam: Initialization failed:', error);
-          }
-        } else if (window.Maryam) {
-          // Widget exists but not ready, retry
-          setTimeout(initializeWidget, 100);
-        } else {
-          console.error('Maryam: Widget script not loaded');
-        }
-      }
-
-      function loadWidgetScript() {
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = appUrl + '/widget.js?v=' + Date.now();
-        script.async = false;
-
-        script.onload = function () {
-          setTimeout(initializeWidget, 200);
-        };
-
-        script.onerror = function () {
-          console.error('Maryam: Failed to load widget script from ' + url);
-        };
-
-        try {
-          document.head.appendChild(script);
-        } catch (e) {
-          document.body.appendChild(script);
-        }
-      }
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', loadWidgetScript);
-      } else {
-        loadWidgetScript();
-      }
-    })();
+    Nous.init({
+      color: '#1076EE',
+      zIndex: 1000,
+      minimumSilentSecond: 0.2,
+      webhookUrl: `https://maryam-backend.agreeablemushroom-2e0bb051.uaenorth.azurecontainerapps.io/chatbot/invoke`,
+      token: 'c159e352010c1eb5a6f0daf021c6aaf583e682762953309c59fc128ea917284e',
+      userId: '',
+      title: 'Chat Bot',
+      firstMessage: 'How can I help you today?',
+      secondMessage: 'Welcome to our family. How can I help you today?',
+      initPayload: 'Hello!',
+    });
   </script>
 </body>
 
