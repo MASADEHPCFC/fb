@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Menu from './shared/menu';
 import Footer from './shared/footer';
 import { Layout, ConfigProvider } from 'antd';
@@ -9,6 +9,9 @@ import './theme/globalStyles.css';
 const { Content } = Layout;
 
 const App = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   return (
     <ConfigProvider
         theme={{
@@ -22,13 +25,19 @@ const App = () => {
         }}
       >
         <Layout style={{ minHeight: '100vh', background: theme.colors.backgroundSecondary }}>
-          <Menu />
-          <Content style={{ maxWidth: 1200, margin: '0 auto', width: '100%', padding: '24px' }}>
-            <main>
+          {!isHomePage && <Menu />}
+          {isHomePage ? (
+            <main style={{ width: '100%', padding: 0, margin: 0 }}>
               <Outlet />
             </main>
-          </Content>
-          <Footer />
+          ) : (
+            <Content style={{ maxWidth: 1200, margin: '0 auto', width: '100%', padding: '24px' }}>
+              <main>
+                <Outlet />
+              </main>
+            </Content>
+          )}
+          {!isHomePage && <Footer />}
         </Layout>
       </ConfigProvider>
   );
