@@ -1,0 +1,163 @@
+.main-header {
+  position: relative;
+  z-index: 1000;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 100%;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.header-menu-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-menu {
+  background: transparent;
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  font-size: 24px;
+  padding: 0;
+  margin-right: 5px;
+}
+
+.mobile-menu-toggle .anticon {
+  color: #333;
+}
+
+/* Override for homepage */
+.transparent-header .mobile-menu-toggle .anticon {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+  }
+
+  .header-menu-actions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+    gap: 20px;
+    display: none;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  }
+
+  .header-menu-actions .ant-menu-item {
+    margin: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .header-menu-actions .ant-menu-item a,
+  .header-menu-actions .ant-menu-item .nav-link {
+    color: white !important;
+    font-size: 18px;
+    padding: 12px 0;
+    text-align: left;
+    
+  }
+
+  .header-menu-actions .ant-menu {
+    border: none;
+    padding-left: 0;
+  }
+
+  .header-menu-actions .ant-menu-item:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .header-menu-actions .ant-menu-item-selected {
+    background: rgba(255, 255, 255, 0.15) !important;
+  }
+
+  .header-menu-actions.mobile-visible {
+    display: flex;
+  }
+
+  .header-menu {
+    width: 100%;
+    border: none !important;
+  }
+
+  .header-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    padding-top: 10px;
+    align-items: flex-start;
+  }
+
+  .header-buttons .ant-btn {
+    width: 100%;
+    height: 44px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  .header-buttons .ant-btn-default {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.5);
+    color: white;
+  }
+
+  .header-buttons .ant-btn-primary {
+    background: #1890ff;
+    border-color: #1890ff;
+    color: white;
+  }
+
+  /* Transparent menu styles */
+  .ant-layout-header.main-header.mobile-open {
+    background: rgba(0, 0, 0, 0.9) !important;
+  }
+
+  .main-header.mobile-open .header-menu-actions {
+    background: rgba(0, 0, 0, 0.9);
+  }
+
+  .main-header.mobile-open .ant-menu-item,
+  .main-header.mobile-open .ant-menu-submenu-title {
+    color: white !important;
+  }
+
+  .main-header.mobile-open .ant-menu {
+    background: transparent !important;
+  }
+}

@@ -1,13 +1,33 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Layout, Menu as AntMenu } from "antd";
+import { Layout, Menu as AntMenu, Button } from "antd";
+import { MenuOutlined } from "@ant-design/icons";
 import tokenService from "../services/token.service";
-import { Button } from "antd";
-import logoUrl from '../assets/image.jpg'
+import logoUrl from '../assets/image.jpg';
+import { useState, useEffect } from 'react';
+import './menu.css';
 const { Header } = Layout;
 
-const Menu = () => {
+interface MenuProps {
+  isTransparent?: boolean;
+}
+
+const Menu: React.FC<MenuProps> = ({ isTransparent = false }) => {
   const navigate = useNavigate();
   const isLoggedIn = tokenService.LoggedIn();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+      if (window.innerWidth > 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   
   const logout = () => {
     tokenService.removeToken();
@@ -48,24 +68,38 @@ const Menu = () => {
   ];
 
   return (
-    <Header className="main-header">
+    <Header className={`main-header ${isMobileMenuOpen ? 'mobile-open' : ''} ${isTransparent ? 'transparent-header' : ''}`}>
       <div className="header-content">
-        <Link to="/" className="header-logo">
-          {/* <img src={logoUrl} style={{ width: 160, height: 65 }} alt="logo" /> */}
-        </Link>
-        <div className="header-menu-actions">
+        <div className="header-left">
+          {isMobile && (
+            <Button
+              className="mobile-menu-toggle"
+              icon={<MenuOutlined />}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              type="text"
+            />
+          )}
+          <Link to="/" className="header-logo">
+            {/* <img src={logoUrl} style={{ width: 160, height: 65 }} alt="logo" /> */}
+          </Link>
+        </div>
+        <div className={`header-menu-actions ${isMobileMenuOpen ? 'mobile-visible' : ''}`}>
           <AntMenu
-            mode="horizontal"
+            mode={isMobile ? "vertical" : "horizontal"}
             selectedKeys={[]}
             className="header-menu"
             items={menuItems}
+            onClick={() => isMobile && setIsMobileMenuOpen(false)}
           />
           <div className="header-buttons">
             {!isLoggedIn && (
               <Button
                 type="default"
                 size="middle"
-                onClick={() => navigate('/login')}
+                onClick={() => {
+                  navigate('/login');
+                  isMobile && setIsMobileMenuOpen(false);
+                }}
                 style={{ 
                   marginRight: 16,
                   borderColor: '#1890ff',
@@ -78,7 +112,10 @@ const Menu = () => {
             <Button
               type="primary"
               size="middle"
-              onClick={() => navigate('/business-plan')}
+              onClick={() => {
+                navigate('/business-plan');
+                isMobile && setIsMobileMenuOpen(false);
+              }}
               style={{
                 background: '#1890ff',
                 borderColor: '#1890ff',

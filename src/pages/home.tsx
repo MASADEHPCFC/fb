@@ -3,6 +3,7 @@ import { Button, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Menu from '../shared/menu';
+import backgroundImage from '../../public/business-finance-technology.jpg';
 
 const { Title, Paragraph } = Typography;
 
@@ -22,7 +23,7 @@ const FullHeightContainer = styled.div`
       rgba(0, 0, 0, 0.3) 70%, 
       rgba(0, 0, 0, 0.7) 100%
     ),
-    url('/src/assets/business-finance-technology.jpg') center/cover no-repeat;
+    url(${backgroundImage}) center/cover no-repeat;
   margin: 0;
   padding: 0;
 `;
@@ -142,6 +143,15 @@ const StyledTitle = styled(Title)`
     margin-bottom: 24px;
     font-weight: 700;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+    @media (max-width: 768px) {
+      font-size: 40px !important;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 32px !important;
+    }
   }
 `;
 
@@ -154,6 +164,17 @@ const StyledSubtitle = styled(Paragraph)`
     margin-left: auto;
     margin-right: auto;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+      margin-bottom: 32px;
+      padding: 0 20px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
   }
 `;
 
@@ -162,6 +183,12 @@ const ButtonContainer = styled.div`
   gap: 20px;
   justify-content: center;
   margin-top: 40px;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 20px;
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -172,6 +199,19 @@ const StyledButton = styled(Button)`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: auto;
+
+  @media (max-width: 768px) {
+    height: 45px;
+    padding: 0 30px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    height: 45px;
+    padding: 0 20px;
+  }
 
   &.primary {
     background: #2563eb;
@@ -199,7 +239,7 @@ const Home: React.FC = () => {
   return (
     <FullHeightContainer>
       <TransparentMenuWrapper>
-        <Menu />
+        <Menu isTransparent={true} />
       </TransparentMenuWrapper>
         <ContentWrapper>
         <StyledTitle>
