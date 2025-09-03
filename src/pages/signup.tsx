@@ -28,9 +28,9 @@ const Signup: React.FC = () => {
     return (
         <div className="container mt-5">
             <div className="text-center mb-5">
-                <Title level={1}>Create Your PCFC Account</Title>
+                <Title level={1}>Create Your Account</Title>
                 <p className="lead" style={{ fontSize: '1.2rem' }}>
-                    Join PCFC Company Setup to access personalized business setup services, track your applications, and connect with our expert support team. Signing up is quick and easy—get started on your business journey today!
+                    Join FounderBase to create professional business plans, explore market opportunities, and turn your entrepreneurial vision into reality. Get started on your business journey today!
                 </p>
             </div>
             <div className="row justify-content-center">
@@ -38,7 +38,7 @@ const Signup: React.FC = () => {
                     <Card className="shadow-sm">
                         <div className="text-center mb-4">
                             <Title level={2}>Sign Up</Title>
-                            <p className="text-muted">Create your account to get started.</p>
+                            <p className="text-muted">Create your account to start building your business plan</p>
                         </div>
                         <Form
                             form={form}

@@ -68,26 +68,7 @@ const publicRoutes: RouteObject[] = [
     ],
   },
 ];
-const employeeRoutes: RouteObject[] = [
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: "/",
-        element: <EmployeeLanding />,
-      },
-      {
-        path: "/employee",
-        element: <EmployeeLanding />,
-      },
-      {
-        path: "/employee/clients",
-        element: <ClientRegistration />,
-      },
-    ],
-  },
-];
+
 const privateRoute: RouteObject[] = [
   {
     path: "/",
@@ -98,7 +79,7 @@ const privateRoute: RouteObject[] = [
         element: <PrivateRoute />,
         children: [
           {
-            path: "/requests",
+            path: "/",
             element: <Requests />,
           },
          
@@ -107,5 +88,5 @@ const privateRoute: RouteObject[] = [
     ],
   },
 ];
-const TRouter = createBrowserRouter([...publicRoutes, ...privateRoute,...employeeRoutes]);
+const TRouter = createBrowserRouter([...publicRoutes]);
 export default TRouter;
