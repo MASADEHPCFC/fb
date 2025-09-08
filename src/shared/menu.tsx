@@ -1,11 +1,23 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Layout, Menu as AntMenu, Button } from "antd";
-import { MenuOutlined } from "@ant-design/icons";
+import { MenuOutlined, SolutionOutlined } from "@ant-design/icons";
 import tokenService from "../services/token.service";
-import logoUrl from '../assets/image.jpg';
-import { useState, useEffect } from 'react';
-import './menu.css';
+import { useState, useEffect, ReactElement } from "react";
+import logoUrl from "../assets/logo.png";
+import "./menu.css";
 const { Header } = Layout;
+
+interface MenuItem {
+  id: number | string;
+  title: string;
+  path?: string;
+  icon?: ReactElement;
+  children?: {
+    id: string;
+    title: string;
+    path: string;
+  }[];
+}
 
 interface MenuProps {
   isTransparent?: boolean;
@@ -25,50 +37,121 @@ const Menu: React.FC<MenuProps> = ({ isTransparent = false }) => {
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
-  
+
   const logout = () => {
     tokenService.removeToken();
     navigate("/login");
   };
-  const publicLinks = [
+  const publicLinks: MenuItem[] = [
     { id: 1, title: "Home", path: "/" },
-    { id: 2, title: "Business Plan", path: "/business-plan" },
+    {
+      id: 2,
+      title: "Solutions",
+      children: [
+        {
+          id: "business-planning",
+          title: "Business Planning",
+          path: "/business-plan",
+        },
+        {
+          id: "legal",
+          title: "Legal Module",
+          path: "/legal",
+        },
+        {
+          id: "finance",
+          title: "Finance and Accounting",
+          path: "/finance",
+        },
+        {
+          id: "procurement",
+          title: "Procurement",
+          path: "/procurement",
+        },
+        {
+          id: "hr",
+          title: "HR and Payroll",
+          path: "/hr",
+        },
+        {
+          id: "growth",
+          title: "Growth and Marketing",
+          path: "/growth",
+        },
+        {
+          id: "compliance",
+          title: "Compliance and Governance",
+          path: "/compliance",
+        },
+      ],
+    },
     { id: 4, title: "Business Explorer", path: "/business-explorer" },
     { id: 5, title: "Competitor Analysis", path: "/competitor-analysis" },
     { id: 3, title: "About", path: "/about" },
     { id: 6, title: "Contact", path: "/contact" },
   ];
-  const privateLinks = [
+  const privateLinks: MenuItem[] = [
     { id: 7, title: "Dashboard", path: "/dashboard" },
     { id: 8, title: "My Plans", path: "/my-plans" },
     { id: 9, title: "Requests", path: "/requests" },
   ];
-  const Links = isLoggedIn ? [...publicLinks, ...privateLinks] : [...publicLinks];
+  const Links = isLoggedIn
+    ? [...publicLinks, ...privateLinks]
+    : [...publicLinks];
   // Build Ant Design Menu items array
   const menuItems = [
-    ...Links.map((d) => ({
-      key: d.id,
-      label: (
-        <Link to={d.path} className="nav-link px-2 link-secondary" >
-          {d.title}
-        </Link>
-      ),
-    })),
-    ...(isLoggedIn ? [{
-      key: "logout",
-      label: (
-        <Link to="/" className="nav-link px-2 link-secondary" onClick={logout}>
-          Sign Out
-        </Link>
-      ),
-    }] : []),
+    ...Links.map((d) => {
+      if (d.children) {
+        return {
+          key: d.id,
+          label: d.title,
+          icon: d.icon,
+          children: d.children.map((child) => ({
+            key: child.id,
+            label: (
+              <Link to={child.path} className="nav-link px-2 link-secondary">
+                {child.title}
+              </Link>
+            ),
+          })),
+        };
+      }
+      return {
+        key: d.id,
+        label: (
+          <Link to={d.path || "/"} className="nav-link px-2 link-secondary">
+            {d.title}
+          </Link>
+        ),
+      };
+    }),
+    ...(isLoggedIn
+      ? [
+          {
+            key: "logout",
+            label: (
+              <Link
+                to="/"
+                className="nav-link px-2 link-secondary"
+                onClick={logout}
+              >
+                Sign Out
+              </Link>
+            ),
+          },
+        ]
+      : []),
   ];
 
   return (
-    <Header className={`main-header ${isMobileMenuOpen ? 'mobile-open' : ''} ${isTransparent ? 'transparent-header' : ''}`}>
+    <Header
+      className={`main-header ${isMobileMenuOpen ? "mobile-open" : ""} ${
+        isTransparent ? "transparent-header" : ""
+      }`}
+    >
       <div className="header-content">
         <div className="header-left">
           {isMobile && (
@@ -80,12 +163,24 @@ const Menu: React.FC<MenuProps> = ({ isTransparent = false }) => {
             />
           )}
           <Link to="/" className="header-logo">
-            {/* <img src={logoUrl} style={{ width: 160, height: 65 }} alt="logo" /> */}
+            <img
+              src={logoUrl}
+              style={{
+                width: 115,
+                height: 75,
+              }}
+              alt="logo"
+            />
           </Link>
         </div>
-        <div className={`header-menu-actions ${isMobileMenuOpen ? 'mobile-visible' : ''}`}>
+        <div
+          className={`header-menu-actions ${
+            isMobileMenuOpen ? "mobile-visible" : ""
+          }`}
+        >
           <AntMenu
-            mode={isMobile ? "vertical" : "horizontal"}
+            mode={isMobile ? "inline" : "horizontal"}
+            inlineIndent={0}
             selectedKeys={[]}
             className="header-menu"
             items={menuItems}
@@ -97,13 +192,13 @@ const Menu: React.FC<MenuProps> = ({ isTransparent = false }) => {
                 type="default"
                 size="middle"
                 onClick={() => {
-                  navigate('/login');
+                  navigate("/login");
                   isMobile && setIsMobileMenuOpen(false);
                 }}
-                style={{ 
+                style={{
                   marginRight: 16,
-                  borderColor: '#1890ff',
-                  color: '#1890ff'
+                  borderColor: "#1890ff",
+                  color: "#1890ff",
                 }}
               >
                 Sign In
@@ -113,16 +208,16 @@ const Menu: React.FC<MenuProps> = ({ isTransparent = false }) => {
               type="primary"
               size="middle"
               onClick={() => {
-                navigate('/business-plan');
+                navigate("/business-plan");
                 isMobile && setIsMobileMenuOpen(false);
               }}
               style={{
-                background: '#1890ff',
-                borderColor: '#1890ff',
-                transition: 'all 0.3s'
+                background: "#1890ff",
+                borderColor: "#1890ff",
+                transition: "all 0.3s",
               }}
             >
-              Create Business Plan
+              Start Your Business
             </Button>
           </div>
         </div>

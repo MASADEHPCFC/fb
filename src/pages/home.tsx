@@ -1,9 +1,9 @@
-import React from 'react';
-import { Button, Typography } from 'antd';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import Menu from '../shared/menu';
-import backgroundImage from '../../public/business-finance-technology.jpg';
+import React from "react";
+import { Button, Typography } from "antd";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import Menu from "../shared/menu";
+import backgroundImage from "../../public/business-finance-technology.jpg";
 
 const { Title, Paragraph } = Typography;
 
@@ -16,11 +16,11 @@ const FullHeightContainer = styled.div`
   right: 0;
   bottom: 0;
   overflow: hidden;
-  background: 
-    linear-gradient(to bottom, 
-      rgba(0, 0, 0, 0.7) 0%, 
-      rgba(0, 0, 0, 0.3) 30%, 
-      rgba(0, 0, 0, 0.3) 70%, 
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.3) 30%,
+      rgba(0, 0, 0, 0.3) 70%,
       rgba(0, 0, 0, 0.7) 100%
     ),
     url(${backgroundImage}) center/cover no-repeat;
@@ -34,18 +34,18 @@ const TransparentMenuWrapper = styled.div`
   left: 0;
   right: 0;
   z-index: 10;
-  
+
   .ant-layout-header {
     background: transparent !important;
     border-bottom: none !important;
     box-shadow: none !important;
   }
-  
+
   .ant-menu {
     background: transparent !important;
     border-bottom: none !important;
   }
-  
+
   .ant-menu-item,
   .ant-menu-submenu-title,
   .ant-menu-item a,
@@ -55,13 +55,13 @@ const TransparentMenuWrapper = styled.div`
   .nav-link.link-secondary {
     color: white !important;
     position: relative;
-    
+
     &:hover {
       color: white !important;
       background: transparent !important;
-      
+
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: 0;
         left: 0;
@@ -72,16 +72,16 @@ const TransparentMenuWrapper = styled.div`
       }
     }
   }
-  
+
   .ant-menu-item-selected,
   .ant-menu-item-selected a,
   .ant-menu-item-selected .nav-link {
     color: white !important;
     background: transparent !important;
     position: relative;
-    
+
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       bottom: 0;
       left: 0;
@@ -90,31 +90,31 @@ const TransparentMenuWrapper = styled.div`
       background: white;
     }
   }
-  
+
   .header-logo,
   .header-logo a {
     color: white !important;
   }
-  
+
   .ant-menu-horizontal {
     .ant-menu-item,
     .ant-menu-submenu-title {
       color: white !important;
-      
+
       &::after {
         border-bottom-color: transparent !important;
       }
-      
+
       &:hover::after {
         border-bottom-color: transparent !important;
       }
     }
-    
+
     .ant-menu-item-selected::after {
       border-bottom-color: transparent !important;
     }
   }
-  
+
   .ant-btn {
     &.header-setup-btn {
       background: linear-gradient(90deg, #1677ff 0%, #00c6ff 100%) !important;
@@ -127,13 +127,20 @@ const TransparentMenuWrapper = styled.div`
 const ContentWrapper = styled.div`
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+  transform: translateY(-50%);
+  text-align: left;
   width: 100%;
   max-width: 1200px;
-  padding: 0 20px;
+  padding: 0 80px;
   z-index: 2;
+
+  @media (max-width: 768px) {
+    padding: 0 40px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 20px;
+  }
 `;
 
 const StyledTitle = styled(Title)`
@@ -161,8 +168,8 @@ const StyledSubtitle = styled(Paragraph)`
     font-size: 24px;
     margin-bottom: 48px;
     max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
+    margin-right: 0;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 
     @media (max-width: 768px) {
@@ -181,7 +188,7 @@ const StyledSubtitle = styled(Paragraph)`
 const ButtonContainer = styled.div`
   display: flex;
   gap: 20px;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 40px;
 
   @media (max-width: 480px) {
@@ -217,7 +224,7 @@ const StyledButton = styled(Button)`
     background: #2563eb;
     border-color: #2563eb;
     color: white;
-    
+
     &:hover {
       background: #1d4ed8;
       border-color: #1d4ed8;
@@ -228,7 +235,7 @@ const StyledButton = styled(Button)`
     background: transparent;
     border: 2px solid white;
     color: white;
-    
+
     &:hover {
       background: rgba(255, 255, 255, 0.1);
     }
@@ -241,29 +248,31 @@ const Home: React.FC = () => {
       <TransparentMenuWrapper>
         <Menu isTransparent={true} />
       </TransparentMenuWrapper>
-        <ContentWrapper>
-        <StyledTitle>
-          Turn Your Vision Into Reality
-        </StyledTitle>
+      <ContentWrapper>
+        <StyledTitle>Start smart. Scale fast. Stay strong..</StyledTitle>
         <StyledSubtitle>
-          Create a professional business plan and launch your company with our
-          comprehensive suite of entrepreneurial tools.
+          Build your business from idea to launch with AI-powered planning,
+          co-founder matching, and UAE-ready startup tools.
         </StyledSubtitle>
         <ButtonContainer>
           <Link to="/business-plan">
             <StyledButton className="primary" size="large">
-              Create Business Plan
+              Start Your Business
             </StyledButton>
           </Link>
           <Link to="/business-explorer">
             <StyledButton className="secondary" size="large">
-              Explore Business
+              Explore Dubai's Business Landscape
             </StyledButton>
           </Link>
         </ButtonContainer>
+        <StyledSubtitle style={{ marginTop: '24px', marginBottom: 0 }}>
+          Built for UAE Founders
+        </StyledSubtitle>
       </ContentWrapper>
     </FullHeightContainer>
   );
 };
 
 export default Home;
+  
